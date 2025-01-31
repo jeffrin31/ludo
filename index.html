@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ludo Game</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+        }
+        .board {
+            display: grid;
+            grid-template-columns: repeat(15, 40px);
+            grid-template-rows: repeat(15, 40px);
+            gap: 2px;
+            background-color: #000;
+        }
+        .cell {
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border: 1px solid #ccc;
+        }
+        .red { background-color: red; }
+        .green { background-color: green; }
+        .blue { background-color: blue; }
+        .yellow { background-color: yellow; }
+    </style>
+</head>
+<body>
+    <div class="board" id="board"></div>
+
+    <script>
+        const board = document.getElementById('board');
+        
+        for (let i = 0; i < 225; i++) {
+            let cell = document.createElement('div');
+            cell.classList.add('cell');
+            
+            // Assigning base colors for Ludo corners
+            if (i < 5 * 15 && i % 15 < 5) cell.classList.add('red');
+            if (i < 5 * 15 && i % 15 > 9) cell.classList.add('blue');
+            if (i > 9 * 15 && i % 15 < 5) cell.classList.add('yellow');
+            if (i > 9 * 15 && i % 15 > 9) cell.classList.add('green');
+            
+            board.appendChild(cell);
+        }
+    </script>
+</body>
+</html>
